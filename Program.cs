@@ -158,13 +158,13 @@ public class Labyrinth
 
     private static void HasExit(Tuple<int, int> startpoint, Tuple<int, int> point, Stack<Tuple<int, int>> stck)
     {
-        var arr = stck.ToArray();
-
         if (stck.Contains(point))
         {
             stck.Clear();
             return;
         }
+
+        var arr = stck.ToArray();
 
         if (EntranceList.Contains(point) & !startpoint.Equals(point))
         {
