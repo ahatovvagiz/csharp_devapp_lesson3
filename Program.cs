@@ -208,7 +208,6 @@ public class Labyrinth
 
     private static void TryMove(Tuple<int, int> nextpoint, Tuple<int, int> point, Tuple<int, int> startpoint, Tuple<int, int>[] arr)
     {
-        //if ((stck.Count != 0 ? !nextpoint.Equals(stck.Peek()) : true) && l[nextpoint.Item1, nextpoint.Item2] == 0)
         if (l[nextpoint.Item1, nextpoint.Item2] == 0)
         {
             var newstack = new Stack<Tuple<int, int>>(arr);
