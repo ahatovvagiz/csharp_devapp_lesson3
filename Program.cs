@@ -182,22 +182,22 @@ public class Labyrinth
         //смотрим слева
         if (point.Item1 - 1 >= 0)
         {
-            TryMove(new Tuple<int, int>(point.Item1 - 1, point.Item2), point, startpoint, stck, arr);
+            TryMove(new Tuple<int, int>(point.Item1 - 1, point.Item2), point, startpoint, arr);
         }
         //смотрим сверху
         if (point.Item2 - 1 >= 0)
         {
-            TryMove(new Tuple<int, int>(point.Item1, point.Item2 - 1), point, startpoint, stck, arr);
+            TryMove(new Tuple<int, int>(point.Item1, point.Item2 - 1), point, startpoint, arr);
         }
         //смотрим справа
         if (point.Item1 + 1 < LengthRow)
         {
-            TryMove(new Tuple<int, int>(point.Item1 + 1, point.Item2), point, startpoint, stck, arr);
+            TryMove(new Tuple<int, int>(point.Item1 + 1, point.Item2), point, startpoint, arr);
         }
         //смотрим снизу
         if (point.Item2 + 1 < LengthCol)
         {
-            TryMove(new Tuple<int, int>(point.Item1, point.Item2 + 1), point, startpoint, stck, arr);
+            TryMove(new Tuple<int, int>(point.Item1, point.Item2 + 1), point, startpoint, arr);
         }
     }
 
@@ -206,9 +206,10 @@ public class Labyrinth
         return ($"({point.Item1 + 1}, {point.Item2 + 1})");
     }
 
-    private static void TryMove(Tuple<int, int> nextpoint, Tuple<int, int> point, Tuple<int, int> startpoint, Stack<Tuple<int, int>> stck, Tuple<int, int>[] arr)
+    private static void TryMove(Tuple<int, int> nextpoint, Tuple<int, int> point, Tuple<int, int> startpoint, Tuple<int, int>[] arr)
     {
-        if ((stck.Count != 0 ? !nextpoint.Equals(stck.Peek()) : true) && l[nextpoint.Item1, nextpoint.Item2] == 0)
+        //if ((stck.Count != 0 ? !nextpoint.Equals(stck.Peek()) : true) && l[nextpoint.Item1, nextpoint.Item2] == 0)
+        if (l[nextpoint.Item1, nextpoint.Item2] == 0)
         {
             var newstack = new Stack<Tuple<int, int>>(arr);
             newstack.Push(point);
