@@ -26,7 +26,6 @@ public class Labyrinth
     private static int LengthRow;
     private static int LengthCol;
     private static List<Tuple<int, int>> EntranceList = new List<Tuple<int, int>>();
-    //private static Queue<> MyWayStacks = new Queue<>();
 
     public Labyrinth(int[,] paramL)
     {
@@ -160,14 +159,10 @@ public class Labyrinth
     private static void HasExit(Tuple<int, int> startpoint, Tuple<int, int> point, Stack<Tuple<int, int>> stck)
     {
         var arr = stck.ToArray();
-        //if (startpoint.Equals(point))
-        //{
-        //Console.Write("[");
-        //Console.Write("[" + FromIndexToCoord(point));
-        //}
+
         if (stck.Contains(point))
         {
-            //stck.Clear();
+            stck.Clear();
             return;
         }
 
@@ -177,21 +172,12 @@ public class Labyrinth
             var dispstack = new Stack<Tuple<int, int>>(arr);
             while (dispstack.TryPop(out Tuple<int, int>? a))
             {
-                //if (a is null)
-                //{
-                //    Console.WriteLine("]");
-                //    break;
-                //}
                 Console.Write(FromIndexToCoord(a));
             }
             Console.WriteLine(FromIndexToCoord(point) + "]");
             return;
         }
         
-        //else
-        //{
-        //    //Console.Write(FromIndexToCoord(point) + " - ");
-        //} 
         Array.Reverse(arr);
         //смотрим слева
         if (point.Item1 - 1 >= 0)
@@ -222,21 +208,11 @@ public class Labyrinth
 
     private static void TryMove(Tuple<int, int> nextpoint, Tuple<int, int> point, Tuple<int, int> startpoint, Stack<Tuple<int, int>> stck, Tuple<int, int>[] arr)
     {
-        //nextpoint = new Tuple<int, int>(point.Item1 + 1, point.Item2);
         if ((stck.Count != 0 ? !nextpoint.Equals(stck.Peek()) : true) && l[nextpoint.Item1, nextpoint.Item2] == 0)
         {
-            //n++;
-            //if (!stck.Contains(point))
-            //{
-                var newstack = new Stack<Tuple<int, int>>(arr);
-                newstack.Push(point);
-                HasExit(startpoint, nextpoint, newstack);
-            //} 
-            //else
-            //{ 
-            //    stck.Clear();
-            //}
-            //return;
+            var newstack = new Stack<Tuple<int, int>>(arr);
+            newstack.Push(point);
+            HasExit(startpoint, nextpoint, newstack);
         }
 
     }
