@@ -108,7 +108,7 @@ public class Labyrinth
         }
     }
 
-    public static void GetWays()
+    public void GetWays()
     {
         bool Error = false;
         PrintArray();
@@ -226,6 +226,6 @@ public class Program
     {
         Labyrinth lab = new Labyrinth();
         //Labyrinth.PrintEntrance();
-        Labyrinth.GetWays();
+        lab.GetWays();
     }
 }
